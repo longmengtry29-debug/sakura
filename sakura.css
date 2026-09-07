@@ -1,0 +1,521 @@
+/* ==========================================================================
+   Tokyo Sakura 3D - Styling System
+   ========================================================================== */
+
+:root {
+  --sakura-primary: #ff758c;
+  --sakura-soft: #ffb7c5;
+  --sakura-glow: rgba(255, 117, 140, 0.45);
+  
+  --tokyo-tower-red: #ff3344;
+  --lantern-gold: #ffaa33;
+  --lantern-glow: rgba(255, 170, 51, 0.4);
+
+  --bg-glass: rgba(12, 16, 26, 0.72);
+  --bg-glass-hover: rgba(22, 28, 44, 0.85);
+  --border-glass: rgba(255, 255, 255, 0.12);
+  --border-active: rgba(255, 117, 140, 0.6);
+
+  --text-bright: #ffffff;
+  --text-dim: #9aa2b5;
+
+  --font-display: 'Cinzel', serif;
+  --font-kanji: 'Noto Serif JP', serif;
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-pill: 9999px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #05070e;
+  font-family: var(--font-sans);
+  color: var(--text-bright);
+}
+
+/* Three.js Canvas Container */
+#canvas-container {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+#canvas-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+/* Cinematic Vignette */
+.cinematic-vignette {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background: radial-gradient(circle at center, transparent 55%, rgba(4, 6, 12, 0.65) 100%);
+}
+
+/* ==========================================================================
+   Header & Top Branding
+   ========================================================================== */
+
+.sakura-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  padding: 24px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
+}
+
+.brand-title {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  pointer-events: auto;
+}
+
+.kanji-badge {
+  font-family: var(--font-kanji);
+  font-size: 1.1rem;
+  font-weight: 900;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 117, 140, 0.15);
+  border: 1px solid rgba(255, 117, 140, 0.4);
+  color: var(--sakura-soft);
+  letter-spacing: 4px;
+  text-shadow: 0 0 12px var(--sakura-glow);
+  backdrop-filter: blur(12px);
+}
+
+.title-text h1 {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8);
+  background: linear-gradient(135deg, #fff 40%, var(--sakura-soft) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.title-text .sub-title {
+  font-size: 0.78rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  display: block;
+  margin-top: 2px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+}
+
+.header-actions {
+  display: flex;
+  gap: 12px;
+  pointer-events: auto;
+}
+
+.hud-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-pill);
+  color: var(--text-bright);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  text-decoration: none;
+}
+
+.hud-btn:hover {
+  background: var(--bg-glass-hover);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+  color: #fff;
+}
+
+.hud-btn-audio.active {
+  border-color: var(--sakura-primary);
+  background: rgba(255, 117, 140, 0.2);
+  color: var(--sakura-soft);
+  box-shadow: 0 0 16px var(--sakura-glow);
+}
+
+/* ==========================================================================
+   Floating Interactive HUD Panel
+   ========================================================================== */
+
+.hud-panel {
+  position: fixed;
+  right: 32px;
+  top: 100px;
+  width: 310px;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  padding: 24px 20px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 10;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  animation: hudSlideIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes hudSlideIn {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.hud-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.hud-label {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+  color: var(--sakura-soft);
+  text-transform: uppercase;
+}
+
+/* Time Presets Segmented Buttons */
+.time-presets {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 4px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.time-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 4px;
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.time-btn .time-icon {
+  font-size: 1.25rem;
+  margin-bottom: 2px;
+}
+
+.time-btn .time-name {
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.time-btn .time-desc {
+  font-size: 0.62rem;
+  opacity: 0.7;
+}
+
+.time-btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.time-btn.active {
+  background: rgba(255, 117, 140, 0.25);
+  color: #fff;
+  border: 1px solid var(--border-active);
+  box-shadow: 0 0 14px var(--sakura-glow);
+}
+
+/* Sliders */
+.slider-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.slider-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+
+.slider-val {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--sakura-soft);
+  min-width: 34px;
+  text-align: right;
+}
+
+input[type="range"] {
+  flex-grow: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--sakura-primary);
+  box-shadow: 0 0 8px var(--sakura-glow);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.25);
+}
+
+/* Action Button */
+.action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, rgba(255, 117, 140, 0.25) 0%, rgba(255, 80, 110, 0.15) 100%);
+  border: 1px solid rgba(255, 117, 140, 0.4);
+  border-radius: var(--radius-sm);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(255, 117, 140, 0.15);
+}
+
+.action-btn:hover {
+  background: linear-gradient(135deg, rgba(255, 117, 140, 0.4) 0%, rgba(255, 80, 110, 0.3) 100%);
+  border-color: var(--sakura-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--sakura-glow);
+}
+
+.action-btn:active {
+  transform: translateY(0);
+}
+
+/* Camera Modes */
+.camera-modes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.cam-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 9px 8px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-dim);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cam-btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.cam-btn.active {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.hud-footer p {
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  line-height: 1.4;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 14px;
+}
+
+/* ==========================================================================
+   Bottom Scene Legend
+   ========================================================================== */
+
+.scene-legend {
+  position: fixed;
+  bottom: 28px;
+  left: 32px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.legend-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-pill);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.dot.live {
+  width: 7px;
+  height: 7px;
+  background: var(--sakura-primary);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--sakura-primary);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.3); }
+}
+
+/* ==========================================================================
+   Loading Overlay
+   ========================================================================== */
+
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  background: #060812;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.loading-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loading-content {
+  text-align: center;
+  max-width: 400px;
+  padding: 20px;
+}
+
+.sakura-loader {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 24px auto;
+  animation: flowerSpin 6s linear infinite;
+}
+
+.petal {
+  position: absolute;
+  width: 26px;
+  height: 38px;
+  background: radial-gradient(circle at 50% 20%, #ffffff 0%, var(--sakura-soft) 40%, var(--sakura-primary) 100%);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  top: 50%;
+  left: 50%;
+  transform-origin: center bottom;
+  box-shadow: 0 0 15px var(--sakura-glow);
+}
+
+.petal.p1 { transform: translate(-50%, -100%) rotate(0deg); }
+.petal.p2 { transform: translate(-50%, -100%) rotate(72deg); }
+.petal.p3 { transform: translate(-50%, -100%) rotate(144deg); }
+.petal.p4 { transform: translate(-50%, -100%) rotate(216deg); }
+.petal.p5 { transform: translate(-50%, -100%) rotate(288deg); }
+
+@keyframes flowerSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  letter-spacing: 4px;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.loading-sub {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .sakura-header {
+    padding: 16px 20px;
+  }
+  .title-text .sub-title {
+    display: none;
+  }
+  .hud-panel {
+    right: 16px;
+    top: auto;
+    bottom: 20px;
+    width: calc(100% - 32px);
+    max-width: 360px;
+    padding: 16px;
+    gap: 14px;
+  }
+  .scene-legend {
+    display: none;
+  }
+}

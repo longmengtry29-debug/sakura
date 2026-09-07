@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CineSphere | Premium Cinema Experience & Online Booking</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header / Navigation Bar -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="brand-logo">
+        <span class="logo-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="23 7 16 12 23 17 23 7"></polygon>
+            <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+          </svg>
+        </span>
+        <span class="brand-name">CINE<span class="highlight">SPHERE</span></span>
+      </a>
+
+      <!-- Location Selector -->
+      <div class="cinema-location">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+          <circle cx="12" cy="10" r="3"></circle>
+        </svg>
+        <select id="locationSelect" aria-label="Select Cinema Location">
+          <option value="Downtown Grand IMAX">Grand Horizon IMAX - Downtown</option>
+          <option value="Uptown Starlight VIP">Starlight Lounge - Uptown</option>
+          <option value="Westside 4DX Laser">Westside 4DX & Laser</option>
+        </select>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="nav-links">
+        <a href="#movies" class="nav-link active">Movies</a>
+        <a href="#experiences" class="nav-link">Experiences</a>
+        <a href="#concessions" class="nav-link">Gourmet Snacks</a>
+        <a href="#membership" class="nav-link">VIP Club</a>
+        <a href="sakura.html" class="nav-link" style="color: #ff85a2;">🌸 Tokyo Sakura 3D</a>
+      </nav>
+
+      <!-- Nav Actions -->
+      <div class="nav-actions">
+        <div class="search-box">
+          <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="movieSearch" placeholder="Search movies, genres..." aria-label="Search movies">
+          <button id="clearSearch" class="clear-search-btn" aria-label="Clear search">&times;</button>
+        </div>
+        <button class="btn btn-primary" id="quickBookBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          Book Tickets
+        </button>
+      </div>
+
+      <!-- Mobile Menu Toggle -->
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Dropdown Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#movies" class="mobile-link">Movies</a>
+    <a href="#experiences" class="mobile-link">Experiences</a>
+    <a href="#concessions" class="mobile-link">Gourmet Snacks</a>
+    <a href="#membership" class="mobile-link">VIP Club</a>
+    <a href="sakura.html" class="mobile-link" style="color: #ff85a2;">🌸 Tokyo Sakura 3D</a>
+  </div>
+
+  <main>
+    <!-- Hero Spotlight Section -->
+    <section class="hero-section" id="heroSection">
+      <div class="hero-backdrop" id="heroBackdrop"></div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="live-dot"></span> NOW SHOWING IN IMAX LASER
+        </div>
+        <h1 class="hero-title" id="heroTitle">Dune: Part Two</h1>
+        
+        <div class="hero-meta">
+          <span class="rating-badge"><svg width="14" height="14" fill="#f5c518" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg> 8.6</span>
+          <span class="cert-badge" id="heroCert">PG-13</span>
+          <span class="duration-badge" id="heroDuration">2h 46m</span>
+          <span class="format-badge">IMAX 3D</span>
+          <span class="format-badge">DOLBY ATMOS</span>
+        </div>
+
+        <p class="hero-synopsis" id="heroSynopsis">
+          Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators who destroyed his family, facing a choice between the love of his life and the fate of the universe.
+        </p>
+
+        <div class="hero-genres" id="heroGenres">
+          <span class="genre-pill">Sci-Fi</span>
+          <span class="genre-pill">Adventure</span>
+          <span class="genre-pill">Action</span>
+        </div>
+
+        <div class="hero-buttons">
+          <button class="btn btn-primary btn-large" id="heroBookBtn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            Select Seats & Book
+          </button>
+          <button class="btn btn-glass btn-large" id="heroTrailerBtn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+            Watch Trailer
+          </button>
+        </div>
+      </div>
+
+      <!-- Hero Thumbnails Navigation -->
+      <div class="hero-thumbnails" id="heroThumbnails">
+        <!-- Injected via JS -->
+      </div>
+    </section>
+
+    <!-- Movies Section & Schedule -->
+    <section class="section movies-section" id="movies">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="section-subtitle">DISCOVER & RESERVE</span>
+            <h2 class="section-title">In Theatres & Coming Soon</h2>
+          </div>
+
+          <!-- Tab Filters -->
+          <div class="category-tabs" id="categoryTabs">
+            <button class="tab-btn active" data-filter="all">All Movies</button>
+            <button class="tab-btn" data-filter="now-showing">Now Showing</button>
+            <button class="tab-btn" data-filter="coming-soon">Coming Soon</button>
+            <button class="tab-btn" data-filter="imax">IMAX</button>
+          </div>
+        </div>
+
+        <!-- Date Selector Bar -->
+        <div class="date-selector-wrapper">
+          <div class="date-selector-label">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            <span>Choose Date:</span>
+          </div>
+          <div class="date-pills" id="datePills">
+            <!-- Dynamically populated dates -->
+          </div>
+        </div>
+
+        <!-- Movie Grid -->
+        <div class="movies-grid" id="moviesGrid">
+          <!-- Dynamically populated movies -->
+        </div>
+
+        <!-- No Results Fallback -->
+        <div class="no-results" id="noResults" style="display: none;">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            <line x1="8" y1="11" x2="14" y2="11"></line>
+          </svg>
+          <h3>No matching movies found</h3>
+          <p>Try searching for a different title or resetting the genre filters.</p>
+          <button class="btn btn-outline" id="resetFiltersBtn">Reset All Filters</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experiences Showcase -->
+    <section class="section experiences-section" id="experiences">
+      <div class="container">
+        <div class="section-center-header">
+          <span class="section-subtitle">NEXT-GENERATION AUDITORIUMS</span>
+          <h2 class="section-title">The CineSphere Experience</h2>
+          <p class="section-description">Immerse your senses in cinema technology designed to bring every frame, whisper, and explosion to life.</p>
+        </div>
+
+        <div class="experiences-grid">
+          <div class="exp-card">
+            <div class="exp-icon-box">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+            </div>
+            <div class="exp-badge">CRYSTAL 4K DUAL LASER</div>
+            <h3>IMAX® with Laser</h3>
+            <p>Monolithic 8-story curved screen paired with dual 4K laser projection delivering unmatched brightness, contrast, and vivid color spectrum.</p>
+          </div>
+
+          <div class="exp-card highlight-card">
+            <div class="exp-icon-box">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+              </svg>
+            </div>
+            <div class="exp-badge gold">360° SPATIAL AUDIO</div>
+            <h3>Dolby Atmos® Sound</h3>
+            <p>Over 64 individually amplified acoustic speakers wrap completely around you and overhead, moving sound in three-dimensional space with pin-point accuracy.</p>
+          </div>
+
+          <div class="exp-card">
+            <div class="exp-icon-box">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 18v3h16v-3M2 10h20M6 14h12"></path>
+                <rect x="4" y="6" width="16" height="8" rx="2"></rect>
+              </svg>
+            </div>
+            <div class="exp-badge">FULL MOTION & FX</div>
+            <h3>4DX Multisensory</h3>
+            <p>Synchronized motion seats that tilt, heave, and pitch with simulated wind, mist, scents, snow, and lightning for total movie immersion.</p>
+          </div>
+
+          <div class="exp-card">
+            <div class="exp-icon-box">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+              </svg>
+            </div>
+            <div class="exp-badge">LUXURY DINING</div>
+            <h3>VIP Lounge & Recliners</h3>
+            <p>Plush motorized leather recliners with heated footrests, private swivel tables, and at-your-seat chef-crafted dining service during the film.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gourmet Concessions Bar Section -->
+    <section class="section concessions-section" id="concessions">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="section-subtitle">THE SNACK BAR ELEVATED</span>
+            <h2 class="section-title">Gourmet Treats & Beverages</h2>
+          </div>
+          <span class="badge-tag">Order Ahead & Skip the Queue</span>
+        </div>
+
+        <div class="concessions-grid" id="concessionsGrid">
+          <!-- Dynamically populated concessions items -->
+        </div>
+      </div>
+    </section>
+
+    <!-- VIP Club Membership Promo -->
+    <section class="section membership-section" id="membership">
+      <div class="container">
+        <div class="membership-card">
+          <div class="membership-glow"></div>
+          <div class="membership-content">
+            <span class="membership-tag">CINESPHERE ELITE PASS</span>
+            <h2>Unlimited Movies. Zero Booking Fees. Exclusive Premieres.</h2>
+            <p>Join over 50,000 film enthusiasts. Enjoy 20% off all concessions, free IMAX upgrades every Tuesday, and red carpet invite privileges.</p>
+            <div class="membership-perks">
+              <div class="perk-item">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                <span>2 Free Movie Tickets Monthly</span>
+              </div>
+              <div class="perk-item">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                <span>Complimentary Gourmet Popcorn Refills</span>
+              </div>
+              <div class="perk-item">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                <span>Priority Seat Reservation 7 Days Early</span>
+              </div>
+            </div>
+            <div class="membership-actions">
+              <button class="btn btn-gold btn-large" id="joinVipBtn">Join For $19.99/mo</button>
+              <span class="membership-subtext">Cancel anytime. No lock-in contracts.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Interactive Seat Booking Modal -->
+  <div class="modal-backdrop" id="bookingModal" aria-hidden="true" role="dialog">
+    <div class="modal-dialog modal-booking">
+      <button class="modal-close" id="closeBookingModal" aria-label="Close booking modal">&times;</button>
+      
+      <!-- Modal Header -->
+      <div class="booking-header">
+        <div class="booking-movie-thumb">
+          <img id="modalMoviePoster" src="" alt="Movie Poster">
+        </div>
+        <div class="booking-movie-info">
+          <div class="badge-row">
+            <span class="format-badge highlight" id="modalMovieFormat">IMAX 3D</span>
+            <span class="cert-badge" id="modalMovieCert">PG-13</span>
+          </div>
+          <h2 id="modalMovieTitle">Movie Title</h2>
+          <div class="booking-meta-line">
+            <span id="modalSelectedDate">Fri, Oct 18</span> &bull; 
+            <span id="modalSelectedTime">19:30 PM</span> &bull; 
+            <span id="modalAuditorium">Auditorium 1 (Dolby Atmos)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="booking-body">
+        <!-- Screen Curve Stage -->
+        <div class="screen-container">
+          <div class="screen-curve"></div>
+          <div class="screen-label">CINEMA SCREEN THIS WAY</div>
+          <div class="screen-glow"></div>
+        </div>
+
+        <!-- Seating Chart Matrix -->
+        <div class="seats-matrix-wrapper">
+          <div class="seats-matrix" id="seatsMatrix">
+            <!-- Dynamically rendered seats -->
+          </div>
+        </div>
+
+        <!-- Seat Legend -->
+        <div class="seat-legend">
+          <div class="legend-item">
+            <span class="seat-sample seat-available"></span>
+            <span>Standard ($12.50)</span>
+          </div>
+          <div class="legend-item">
+            <span class="seat-sample seat-premium"></span>
+            <span>Premium ($16.00)</span>
+          </div>
+          <div class="legend-item">
+            <span class="seat-sample seat-vip"></span>
+            <span>VIP Recliner ($22.00)</span>
+          </div>
+          <div class="legend-item">
+            <span class="seat-sample seat-selected"></span>
+            <span>Your Selection</span>
+          </div>
+          <div class="legend-item">
+            <span class="seat-sample seat-occupied"></span>
+            <span>Reserved</span>
+          </div>
+        </div>
+
+        <!-- Snack Add-ons in Booking -->
+        <div class="booking-snacks-section">
+          <h4 class="snacks-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+              <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+              <line x1="6" y1="1" x2="6" y2="4"></line>
+              <line x1="10" y1="1" x2="10" y2="4"></line>
+              <line x1="14" y1="1" x2="14" y2="4"></line>
+            </svg>
+            Add Treats for Showtime
+          </h4>
+          <div class="booking-snacks-list" id="bookingSnacksList">
+            <!-- Injected dynamically -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Footer / Sticky Checkout Bar -->
+      <div class="booking-footer">
+        <div class="booking-summary-info">
+          <div class="selected-seats-text">
+            <span>Selected Seats:</span>
+            <strong id="selectedSeatsDisplay">None</strong>
+          </div>
+          <div class="total-price-text">
+            <span>Total:</span>
+            <strong class="total-amount" id="totalPriceDisplay">$0.00</strong>
+          </div>
+        </div>
+
+        <button class="btn btn-primary btn-large" id="confirmBookingBtn" disabled>
+          Proceed to Checkout
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Digital E-Ticket Pass Modal -->
+  <div class="modal-backdrop" id="ticketModal" aria-hidden="true" role="dialog">
+    <div class="modal-dialog modal-ticket">
+      <button class="modal-close" id="closeTicketModal" aria-label="Close ticket modal">&times;</button>
+      
+      <div class="ticket-wrapper" id="printableTicket">
+        <div class="ticket-header">
+          <div class="ticket-brand">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="23 7 16 12 23 17 23 7"></polygon>
+              <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+            </svg>
+            <span>CINESPHERE PASS</span>
+          </div>
+          <span class="ticket-status">CONFIRMED &bull; ADMIT 1+</span>
+        </div>
+
+        <div class="ticket-hero-img">
+          <img id="ticketMovieImg" src="" alt="Movie">
+          <div class="ticket-gradient-overlay"></div>
+          <div class="ticket-movie-title-box">
+            <h3 id="ticketMovieTitle">Dune: Part Two</h3>
+            <span id="ticketExperienceBadge" class="format-badge highlight">IMAX 3D</span>
+          </div>
+        </div>
+
+        <div class="ticket-body">
+          <div class="ticket-grid">
+            <div class="ticket-cell">
+              <span class="ticket-label">CINEMA LOCATION</span>
+              <strong id="ticketLocation">Downtown Grand IMAX</strong>
+            </div>
+            <div class="ticket-cell">
+              <span class="ticket-label">AUDITORIUM</span>
+              <strong id="ticketAuditorium">Auditorium 1</strong>
+            </div>
+            <div class="ticket-cell">
+              <span class="ticket-label">DATE</span>
+              <strong id="ticketDate">Oct 18, 2026</strong>
+            </div>
+            <div class="ticket-cell">
+              <span class="ticket-label">SHOWTIME</span>
+              <strong id="ticketTime">19:30 PM</strong>
+            </div>
+            <div class="ticket-cell span-2">
+              <span class="ticket-label">SEAT NUMBERS</span>
+              <strong id="ticketSeats" class="highlight-text">E7, E8</strong>
+            </div>
+            <div class="ticket-cell span-2" id="ticketConcessionsRow">
+              <span class="ticket-label">CONCESSIONS PRE-ORDER</span>
+              <strong id="ticketConcessions">None</strong>
+            </div>
+          </div>
+
+          <!-- Perforation cut -->
+          <div class="ticket-perforation">
+            <span class="notch notch-left"></span>
+            <span class="dashed-line"></span>
+            <span class="notch notch-right"></span>
+          </div>
+
+          <!-- Barcode and Verification -->
+          <div class="ticket-barcode-section">
+            <div class="barcode-visual">
+              <div class="barcode-lines"></div>
+              <span class="barcode-number" id="ticketCode">CS-8934-2026-X99</span>
+            </div>
+            <div class="ticket-qr">
+              <!-- Crisp SVG QR Code -->
+              <svg width="68" height="68" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M2 2h8v8H2V2zm2 2v4h4V4H4zm10-2h8v8h-8V2zm2 2v4h4V4h-4zM2 14h8v8H2v-8zm2 2v4h4v-4H4zm14-2h4v2h-4v-2zm-4 0h2v4h-2v-4zm2 2h2v4h-2v-4zm2 2h2v4h-2v-4zm-4 2h2v2h-2v-2z"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="ticket-footer">
+          <p>Please present this digital pass or printed QR code at the ticket scanner upon arrival.</p>
+        </div>
+      </div>
+
+      <div class="ticket-actions">
+        <button class="btn btn-primary" id="printTicketBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 6 2 18 2 18 9"></polyline>
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+            <rect x="6" y="14" width="12" height="8"></rect>
+          </svg>
+          Print / Save Pass
+        </button>
+        <button class="btn btn-glass" id="newBookingBtn">Book Another Film</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Video Trailer Modal -->
+  <div class="modal-backdrop" id="trailerModal" aria-hidden="true" role="dialog">
+    <div class="modal-dialog modal-trailer">
+      <button class="modal-close" id="closeTrailerModal" aria-label="Close trailer modal">&times;</button>
+      <div class="video-container">
+        <iframe id="trailerIframe" src="" title="Movie Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="trailer-info">
+        <h3 id="trailerTitle">Movie Trailer</h3>
+        <p id="trailerDescription">Watch the official high definition trailer.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <span class="toast-icon">✓</span>
+    <span class="toast-message" id="toastMessage">Action completed!</span>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-col brand-col">
+        <a href="#" class="brand-logo">
+          <span class="logo-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="23 7 16 12 23 17 23 7"></polygon>
+              <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+            </svg>
+          </span>
+          <span class="brand-name">CINE<span class="highlight">SPHERE</span></span>
+        </a>
+        <p class="footer-tagline">Redefining cinematic entertainment with next-gen projection, spatial sound, and luxury hospitality.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Twitter">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+          </a>
+          <a href="#" aria-label="Instagram">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </a>
+          <a href="#" aria-label="YouTube">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="#0b0d14"></polygon></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#movies">Now Showing</a></li>
+          <li><a href="#movies">Coming Soon</a></li>
+          <li><a href="#experiences">IMAX Laser</a></li>
+          <li><a href="#experiences">Dolby Atmos</a></li>
+          <li><a href="#experiences">VIP Lounges</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Guest Services</h4>
+        <ul>
+          <li><a href="#membership">CineSphere Elite Club</a></li>
+          <li><a href="#">Gift Cards</a></li>
+          <li><a href="#">Private Screenings & Events</a></li>
+          <li><a href="#">Accessibility & Assistive Audio</a></li>
+          <li><a href="#">FAQ & Support</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col newsletter-col">
+        <h4>Stay in the Spotlight</h4>
+        <p>Subscribe for advance ticket access, secret screenings, and exclusive food promotions.</p>
+        <form class="newsletter-form" id="newsletterForm" onsubmit="event.preventDefault(); window.subscribeNewsletter();">
+          <div class="newsletter-input-group">
+            <input type="email" id="newsletterEmail" placeholder="Enter your email" required aria-label="Email for newsletter">
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom container">
+      <p>&copy; 2026 CineSphere Cinemas Group Inc. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Admission</a>
+        <a href="#">Cookie Preferences</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
